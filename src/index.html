@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+
+ 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="assets/img/logo/logo.png" rel="icon">
+  <title>Mifie - Mon Champ</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/ruang-admin.min.css" rel="stylesheet">
+
+	
+</head>
+
+<body id="page-top">
+  <app-root></app-root>
+</body>
+
+<script>
+  function myFunction() {
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+          } else {
+              li[i].style.display = "none";
+          }
+      }
+  }
+  </script>
+<script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  </script>
+
+  
+
+<SCRIPT language="JavaScript" type="text/javascript">
+
+  function ChangerImages() {
+    console.log("dddddddddddddddddd");
+    $(document).ready(function(){
+    $('#action_menu_btn').click(function(){
+      $('.action_menu').toggle();
+    });
+	});
+  }
+
+  window.onload = ChangerImages();
+</SCRIPT>
+
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="assets/js/ruang-admin.min.js"></script>
+<script src="assets/vendor/chart.js/Chart.min.js"></script>
+<script src="assets/js/demo/chart-area-demo.js"></script>
+</html>

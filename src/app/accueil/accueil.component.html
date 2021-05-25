@@ -1,0 +1,529 @@
+<div id="wrapper">
+          <!-- Sidebar -->
+          <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+              <div class="sidebar-brand-icon">
+                <img style="width: 80px;
+                height: 50px;" src="assets/img/logo/logo.png">
+              </div>
+              <div class="sidebar-brand-text mx-3">Mifie</div>
+            </a>
+            
+              <li class="nav-item active">
+              <div id="bbody">
+                <div  style="background: #1c7721; color: white;" class="tab">
+                  <button class="tablinks active" style="color: white;border-right: 1px solid #dad8d8;" onclick="openCity(event, 'London')">Ma Culture</button>
+                  <button class="tablinks" style="color: white;" onclick="openCity(event, 'Paris')">Ajouter Culture</button>
+                </div>
+                
+                <div id="London" style="display: block ;" class="tabcontent ">
+                 <!-- 1 -->
+              
+                    <p style="margin-top: 100px;text-align: center;">Aucune culture <br> veuillez en ajouter</p>
+                  <img style="margin-top: 20px;
+                  margin-left: 76px;
+                  /* margin-right: auto; */
+                  width: 90px;" src="assets/img/icone/vide.png" alt="">
+      
+                <div class="posi">
+                  <a  onclick="openCity(event, 'Paris')"  style="border-radius: 50%; color: white;"  class="btn btn-success">
+                    <i class="fas fa-plus"></i>
+                  </a>  
+                </div>  
+               
+
+                   
+
+                </div>
+
+
+
+              
+                
+                
+                
+                <div id="Paris" class="tabcontent">
+                  <div *ngIf="showss">
+            <input  type="text" id="myInput" onkeyup="myFunction()" placeholder="Recherche.." title="Saisir votre recherche">
+     
+            
+      <ul   *ngFor="let culture of culture" id="myUL">
+        <li (click)="selectIdCulture(culture.nom,culture.duree,culture.comparaison,culture.affichage)"><a ><span><img src="{{ culture.comparaison}}" alt=""></span>{{ culture.nom }}</a></li>
+      </ul>
+    </div>
+     
+      
+                </div>
+
+
+                
+                
+                
+              </div>
+              
+            </li>
+            <hr  *ngIf="showsx" class="sidebar-divider">
+              <!-- Affichage -->
+            <div *ngIf="shows" >
+                 <div  >
+                      <div >
+                        <img style="width: 100%;
+                        height: 200px; " src="{{affichage}}" alt="">
+      
+                        <h2 style="color: green; margin-top: 10px;margin-left: 5px;"><img  (click)="ajoutCulture()" src="{{comparaison}}" alt=""> {{nom}}</h2>
+                        <hr class="sidebar-divider">
+                        
+                        <h4 style="margin-left: 5px; "><i style="color: green;" class="fas fa-clock"></i>Durée: <span style="color: black;">{{duree}}</span></h4>
+                        <hr class="sidebar-divider">
+                        <h5 style="margin-left: 5px;padding-right: 5px;"> <span style="color: black;">Description--------------------- <i style="color: green;" class="fas fa-volume-up"></i></span></h5>
+                        <hr class="sidebar-divider">
+                        <h5 style="margin-left: 5px;padding-right: 5px;" (click)="openDialog()"> <span style="color: black;">Conseils vidéos-------------- <i style="color: green;" class="fas fa-film"></i></span></h5>
+      
+                        <hr class="sidebar-divider">
+                      </div>
+                 </div>
+
+
+
+            </div>
+           
+            <div>
+              
+            </div>
+      
+            <div>
+            </div>
+          
+          </ul>
+          <!-- Sidebar -->
+          <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+              <!-- TopBar -->
+              <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+                <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                  <i class="fa fa-bars"></i>
+                </button>
+      
+                <button type="button" (click)="toggle()" style="margin-right: 5px;" class="btn btn-outline-success mb-1 menu5"><i class="fas fa-shopping-cart"></i> {{btnName}}</button>
+                <button type="button" class="btn btn-outline-success mb-1 menu5"><i class="fas fa-eye"></i> Suivie de la culture</button>
+                <a href="http://mifie.byethost9.com/home.html" target="_blank" type="button" (click)="toggle()" style="margin-left: 5px;" class="btn btn-outline-success mb-1 menu5"><i class="fas fa-shopping-cart"></i> E-Market Mifié</a>
+
+      
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-search fa-fw"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                      aria-labelledby="searchDropdown">
+                      <form class="navbar-search">
+                        <div class="input-group">
+                          <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
+                            aria-label="Search" aria-describedby="basic-addon2" style="border-color: #0f5c16;">
+                          <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                              <i class="fas fa-search fa-sm"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-bell fa-fw"></i>
+                      <span class="badge badge-danger badge-counter">3+</span>
+                    </a>
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                      aria-labelledby="alertsDropdown">
+                      <h6 class="dropdown-header">
+                        Alerts Center
+                      </h6>
+                      <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                          <div class="icon-circle bg-primary">
+                            <i class="fas fa-file-alt text-white"></i>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="small text-gray-500">December 12, 2019</div>
+                          <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                        </div>
+                      </a>
+                      <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                          <div class="icon-circle bg-success">
+                            <i class="fas fa-donate text-white"></i>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="small text-gray-500">December 7, 2019</div>
+                          $290.29 has been deposited into your account!
+                        </div>
+                      </a>
+                      <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                          <div class="icon-circle bg-warning">
+                            <i class="fas fa-exclamation-triangle text-white"></i>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="small text-gray-500">December 2, 2019</div>
+                          Spending Alert: We've noticed unusually high spending for your account.
+                        </div>
+                      </a>
+                      <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-envelope fa-fw"></i>
+                      <span class="badge badge-warning badge-counter">2</span>
+                    </a>
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                      aria-labelledby="messagesDropdown">
+                      <h6 class="dropdown-header">
+                        Message Center
+                      </h6>
+                      <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="dropdown-list-image mr-3">
+                          <img class="rounded-circle" src="assets/img/man.png" style="max-width: 60px" alt="">
+                          <div class="status-indicator bg-success"></div>
+                        </div>
+                        <div class="font-weight-bold">
+                          <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
+                            having.</div>
+                          <div class="small text-gray-500">Udin Cilok · 58m</div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="dropdown-list-image mr-3">
+                          <img class="rounded-circle" src="assets/img/girl.png" style="max-width: 60px" alt="">
+                          <div class="status-indicator bg-default"></div>
+                        </div>
+                        <div>
+                          <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
+                            say this to all dogs, even if they aren't good...</div>
+                          <div class="small text-gray-500">Jaenab · 2w</div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-tasks fa-fw"></i>
+                      <span class="badge badge-success badge-counter">3</span>
+                    </a>
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                      aria-labelledby="messagesDropdown">
+                      <h6 class="dropdown-header">
+                        Task
+                      </h6>
+                      <a class="dropdown-item align-items-center" href="#">
+                        <div class="mb-3">
+                          <div class="small text-gray-500">Design Button
+                            <div class="small float-right"><b>50%</b></div>
+                          </div>
+                          <div class="progress" style="height: 12px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50"
+                              aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item align-items-center" href="#">
+                        <div class="mb-3">
+                          <div class="small text-gray-500">Make Beautiful Transitions
+                            <div class="small float-right"><b>30%</b></div>
+                          </div>
+                          <div class="progress" style="height: 12px;">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30"
+                              aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item align-items-center" href="#">
+                        <div class="mb-3">
+                          <div class="small text-gray-500">Create Pie Chart
+                            <div class="small float-right"><b>75%</b></div>
+                          </div>
+                          <div class="progress" style="height: 12px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
+                              aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </a>
+                      <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
+                    </div>
+                  </li>
+                  <div class="topbar-divider d-none d-sm-block"></div>
+                  <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
+                      <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                      <a class="dropdown-item" href="#">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Paramèttre
+                      </a>
+                     
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="login.html">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Déconnexion
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </nav>
+              <!-- Topbar -->
+      
+              <!-- Container Fluid-->
+              <div *ngIf="show" class="container-fluid" id="container-wrapper">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                  <h1 class="h3 mb-0 text-gray-800">Mon Potager</h1>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="./">Accueil</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Mon potager</li>
+                  </ol>
+                </div>
+      
+                <div class="row mb-3">
+                  <!-- Earnings (Monthly) Card Example -->
+                  
+                  <!-- Earnings (Annual) Card Example -->
+                  
+                  <!-- New User Card Example -->
+                
+                  <!-- Pending Requests Card Example -->
+                  
+      
+                  <!-- Area Chart -->
+                  <div class="col-xl-8 col-lg-7">
+                    <div class="card mb-4">
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Votre Plantation</h6>
+                        <div class="dropdown no-arrow">
+                          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                          </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="chart-area" style="width: 100%;height:320px ;background-image: url('assets/img/icone/terre4.jpg');">
+                          <img *ngIf="plante" cdkDragBoundary=".card-body"  style="width: 88px; filter: drop-shadow(0 0 0.7rem red);" src="{{comparaison}}" cdkDrag alt="">
+                         
+                        </div>
+                      </div> 
+                      
+                      
+                  
+                    </div>
+                  </div>
+                  <!-- Pie Chart -->
+                  <div class="col-xl-4 col-lg-5">
+                    <div class="card mb-4">
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Resultats du dignostique</h6>
+                      
+                      </div>
+                      <div class="card-body">
+                        <div class="mb-3">
+                          <div class="small " style="color: #5a5a5d;"><i class="fas fa-cloud-rain"></i> Taux d'humidité du sol
+                          </div>
+                          
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 41%;" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100">41%</div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <div class="small " style="color: #5a5a5d;"><i class="fas fa-temperature-low"></i>Température de l'air
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <div class="small " style="color: #5a5a5d;"><i class="fas fa-fire"></i>PH du sol
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 39%;" aria-valuenow="5.5" aria-valuemin="0" aria-valuemax="100">5.5</div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <div class="small "style="color: #5a5a5d;"><i class="fas fa-stroopwafel"></i>Salinité du sol
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div>
+                        </div>
+                       
+                      </div>
+                     
+                    </div>
+                  </div>
+                  <!-- Invoice Example -->
+                 
+                <!--Row-->
+
+              </div>
+              <!---Container Fluid-->
+            </div>
+           
+
+            <div  *ngIf="videos">
+              <h5 style="padding-left:60px; font-weight: bold; margin-top: 20px;padding-bottom: 40px;" class="m-0 font-weight-bold text-primary">Conseils hebdomadaire pour votre culture de Manioc</h5>
+
+
+              <div class="row">
+
+
+
+                            <div class="col-4" style=" padding-left: 40px;padding-bottom: 13px;">
+
+                              <video controls width="350" poster="assets/img/icone/manioc_0.jpg">
+
+                                <source src="assets/video/aze.webm"
+                                        type="video/webm">
+                            
+                                <source src="assets/video/aze.mp4"
+                                        type="video/mp4">
+                            
+
+                            </video>
+                            <figcaption style="font-weight: bold;margin-left: 32px;">Comment entenir son champs de manioc</figcaption>
+
+                            </div>
+
+
+
+                            <div class="col-4" style=" padding-left: 40px;padding-bottom: 13px;">
+                              <video controls width="350" poster="assets/img/icone/manioc_1.jpg">
+
+                                <source src="assets/video/aze.webm"
+                                        type="video/webm">
+                            
+                                <source src="assets/video/aze.mp4"
+                                        type="video/mp4">
+                                
+                            </video>
+                            <figcaption style="font-weight: bold;margin-left: 32px;">Comprendre la culture de manioc</figcaption>
+
+                            </div>
+                          
+                            <div class="col-4" style=" padding-left: 40px;padding-bottom: 13px;" >
+                              <video controls width="350" poster="assets/img/icone/manioc_2.jpeg">
+
+                                <source src="assets/video/aze.webm"
+                                        type="video/webm">
+                            
+                                <source src="assets/video/aze.mp4"
+                                        type="video/mp4">
+                            
+                                
+                            </video>
+
+                            <figcaption style="font-weight: bold;margin-left: 32px;">Comment produire le manioc sur un sol pauvre</figcaption>
+
+                            </div>
+
+                            <div class="col-4" style=" padding-left: 40px;padding-bottom: 13px;">
+
+                              <video controls width="350" poster="assets/img/icone/manioc_5.jpg">
+
+                                <source src="assets/video/aze.webm"
+                                        type="video/webm">
+                            
+                                <source src="assets/video/aze.mp4"
+                                        type="video/mp4">
+                            
+
+                            </video>
+                            <figcaption style="font-weight: bold;margin-left: 32px;">Comment augmenté son rendement de manioc</figcaption>
+
+                            </div>
+
+
+
+                            <div class="col-4" style=" padding-left: 40px;padding-bottom: 13px;">
+                              <video controls width="350" poster="assets/img/icone/manioc_4.png">
+
+                                <source src="assets/video/aze.webm"
+                                        type="video/webm">
+                            
+                                <source src="assets/video/aze.mp4"
+                                        type="video/mp4">
+                                
+                            </video>
+                            <figcaption style="font-weight: bold;margin-left: 22px;">Comment bien commencé sa prduction de manioc</figcaption>
+
+                            </div>
+                          
+                            <div class="col-4" style=" padding-left: 40px;padding-bottom: 13px;" >
+                              <video controls width="350" poster="assets/img/icone/manioc_3.jpg">
+
+                                <source src="assets/video/aze.webm"
+                                        type="video/webm">
+                            
+                                <source src="assets/video/aze.mp4"
+                                        type="video/mp4">
+                            
+                                
+                            </video>
+
+                            <figcaption style="font-weight: bold;margin-left: 32px;">Conseil d'un expert agronome</figcaption>
+
+                            </div>
+
+              </div>
+
+
+              <div>
+
+ 
+
+  <br>
+ 
+        </div>    
+            </div>
+
+            
+            <!-- Footer -->
+            <footer style="margin-top: 65px;" class="sticky-footer bg-white">
+              <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                  <span>Touts droits réservés &copy; 2020 - developpé par
+                    <b><a href="#" target="_blank">Mifié</a></b>
+                  </span> 
+                </div>
+              </div>
+            </footer>
+            <!-- Footer -->
+          </div>
+        </div>
+      
+        <!-- Scroll to top -->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
+
+
+       
